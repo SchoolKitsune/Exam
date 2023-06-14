@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="/Public/Css/table.css">
+    <link rel="stylesheet" href="/Public/Css/standard.css">
+    <link rel="stylesheet" href="/Public/Css/light.css">
+    <link id="active-stylesheet" href="" rel="stylesheet" type="text/css"/>
+</head>
+<body class="container">
+  <h1>User</h1>
+  <table>
+    <tr>
+      <th style="display: none;">Person Nummer</th>
+      <th>Fornavn</th>
+      <th>Mellomnavn</th>
+      <th>Etternavn</th>
+      <th>Telefon</th>
+      <th>Adresse</th>
+      <th>E-Mail</th>
+      <th>Passord</th>
+      <th>Edit</th>
+    </tr>
+    <tr>
+      <% data.forEach(function(d) { %>
+        <td style="display: none;"><strong><%= d.person_nr %></strong></td>
+        <td><strong><%= d.fornavn %></strong></td>
+        <td><strong><%= d.mellomnavn %></strong></td>
+        <td><strong><%= d.etternavn %></strong></td>
+        <td><strong><%= d.tlf %></strong></td>
+        <td><strong><%= d.adresse %></strong></td>
+        <td><strong><%= d.email %></strong></td>
+        <td><strong><%= d.passord %></strong></td>
+        <td><strong></strong></td>
+      <% }); %>
+    </tr>
+  </table>
+
+  <div class="content">
+    <p><%= innhold %></p>
+
+    <button><a href="/exercise">Exercises</a></button><br>
+
+    <button><a href="/logout">Log Out</a></button><br>
+
+    <label for="switch-options">Themes:</label>
+    <select id="switch-options">
+      <option value="switch-options__light" data-stylesheet="/Public/Css/light.css">Light</option>
+      <option value="switch-options__dark" data-stylesheet="/Public/Css/dark.css">Dark</option>
+    </select>
+    </div><br><br>
+    
+    <form action="/delete-account" method="post">
+      <input type="password" name="passord" id="passord" placeholder="Enter Password To Confirm" required>
+      <input type="submit" value="Delete Account">
+    </form><br>
+  
+    <button id="clear-storage">Clear Storage</button>
+    
+    <script src="/Public/JavaScript/switchThemes.js"></script>
+  </div>
+</body>
+</html>

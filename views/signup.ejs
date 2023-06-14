@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/Public/Css/table.css">
+    <link rel="stylesheet" href="/Public/Css/signup.css">
+    <link rel="stylesheet" href="/Public/Css/light.css">
+    <link id="active-stylesheet" href="" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form action="/signup" method="post">
+            <div class="input-field">
+                <input type="text" name="fornavn" id="fornavn" placeholder="Enter First Name *" required>
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="text" name="mellomnavn" id="mellomnavn" placeholder="Enter Middle Name">
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="text" name="etternavn" id="etternavn" placeholder="Enter Last Name *" required>
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="text" name="email" id="email" placeholder="Enter E-Mail *" required>
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="password" name="passord" id="passord" placeholder="Enter Password *" required>
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="number" name="tlf" id="tlf" placeholder="Enter Phone Number">
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="text" name="adresse" id="adresse" placeholder="Enter Address">
+            </div>
+            <br>
+            <input class="submit" type="submit" value="Sign Up">
+            <br> <br>
+            <button class="login"><a href="/login">Log In</a></button>
+        </form>
+        
+        <label for="switch-options">Themes:</label>
+        <select id="switch-options">
+          <option value="switch-options__light" data-stylesheet="/Public/Css/light.css">Light</option>
+          <option value="switch-options__dark" data-stylesheet="/Public/Css/dark.css">Dark</option>
+        </select>
+        <br>
+        <button id="clear-storage">Clear Storage</button>
+    </div>
+    
+    <script src="/Public/JavaScript/switchThemes.js"></script>
+</body>
+</html>

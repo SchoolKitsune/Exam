@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises</title>
+    <link rel="stylesheet" href="/Public/Css/table.css">
+    <link rel="stylesheet" href="/Public/Css/standard.css">
+    <link rel="stylesheet" href="/Public/Css/light.css">
+    <link id="active-stylesheet" href="" rel="stylesheet" type="text/css"/>
+    <!-- <script src="/Public/JavaScript/exercise.js"></script> -->
+</head>
+<body class="container">
+    <h1>Exercises</h1>
+    
+    <table id="myExercises">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Sets</th>
+                <th>Reps</th>
+                <th>Max Rep</th>
+                <th>Weight KG</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(function(d) { %>
+            <tr id="templateRow">
+                <td class="Id" style="display: none;"><%= d.id_exercise %></td>
+                <td class="Name"><%= d.name %></td>
+                <td class="Sets"><%= d.sets %></td>
+                <td class="Reps"><%= d.reps %></td>
+                <td class="Max-Rep"><%= d.max_rep %></td>
+                <td class="Weight"><%= d.weight_kg %></td>
+                <td>
+                    <form action="/delete-exercise" method="POST">
+                        <input type="hidden" name="deleteExercise" value="<%= d.id_exercise %>">
+                        <input type="submit" name="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <div class="content">
+        <button><a href="/create-exercise">Create an Exercise</a></button><br>
+        <button><a href="/">Profile Page</a></button><br>
+        <button><a href="/logout">Log Out</a></button><br>
+        <label for="switch-options">Themes:</label>
+        <select id="switch-options">
+          <option value="switch-options__light" data-stylesheet="/Public/Css/light.css">Light</option>
+          <option value="switch-options__dark" data-stylesheet="/Public/Css/dark.css">Dark</option>
+        </select>
+        </div><br><br>
+        <button id="clear-storage">Clear Storage</button>
+        <script src="/Public/JavaScript/switchThemes.js"></script>
+    </div>
+                                                                                
+</body>
+</html>

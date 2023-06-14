@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Set a height to the container to center vertically */
+    overflow: hidden; /* Or auto */
+}
+
+h1 {
+    margin-bottom: 20px; /* Add some spacing between the heading and the content */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+}
+
+.signup {
+    margin-left: 32%;
+}
+
+.login {
+    margin-left: 35%;
+}

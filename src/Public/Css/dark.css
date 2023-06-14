@@ -1,0 +1,11 @@
+body {
+    background-color: #363636;
+}
+
+h1, td, th, ul, label {
+    color: azure;
+}
+
+tr:hover {
+    background-color: #505050;
+}

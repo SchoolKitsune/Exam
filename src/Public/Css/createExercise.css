@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    white-space: nowrap;
+    overflow: hidden; /* Or auto */
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.exercise-container {
+    height: calc(100vh - 60px); /* Subtract the height of the header */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit {
+    margin-left: 20%;
+}
+
+.exercises {
+    margin-left: 30%;
+}
