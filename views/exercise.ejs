@@ -22,6 +22,7 @@
                 <th>Reps</th>
                 <th>Max Rep</th>
                 <th>Weight KG</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
                 <td class="Reps"><%= d.reps %></td>
                 <td class="Max-Rep"><%= d.max_rep %></td>
                 <td class="Weight"><%= d.weight_kg %></td>
+                <td><button><a href="/edit-exercise/<%= d.name %>">Edit</a></button></td>
                 <td>
                     <form action="/delete-exercise" method="POST">
                         <input type="hidden" name="deleteExercise" value="<%= d.id_exercise %>">

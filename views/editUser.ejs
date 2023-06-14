@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="/Public/Css/table.css">
+    <link rel="stylesheet" href="/Public/Css/standard.css">
+    <link rel="stylesheet" href="/Public/Css/light.css">
+    <link id="active-stylesheet" href="" rel="stylesheet" type="text/css"/>
+</head>
+<body class="container">
+
+    <form action="/update-user/:person_nr" method="post">
+        <% data.forEach(function(d) { %>
+            <div class="input-field">
+                <input type="hidden" name="person_nr" id="person_nr" value="<%= d.person_nr %>">
+            </div>
+            <div class="input-field">
+                <input type="text" name="fornavn" id="fornavn" value="<%= d.fornavn %>">
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="text" name="mellomnavn" id="mellomnavn" value="<%= d.mellomnavn %>">
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="text" name="etternavn" id="etternavn" value="<%= d.etternavn %>">
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="text" name="email" id="email" value="<%= d.email %>">
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="password" name="passord" id="passord" value="<%= d.passord %>">
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="number" name="tlf" id="tlf" value="<%= d.tlf %>">
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="text" name="adresse" id="adresse" value="<%= d.adresse %>">
+            </div>
+            <br>
+            <input class="submit" type="submit" value="Update">
+            <br> <br>
+            <button class="login"><a href="/">Done</a></button>
+        <% }); %>
+    </form>
+
+
+
+    <div class="content">
+        
+        <button><a href="/">Done</a></button><br>
+    
+        <label for="switch-options">Themes:</label>
+        <select id="switch-options">
+          <option value="switch-options__light" data-stylesheet="/Public/Css/light.css">Light</option>
+          <option value="switch-options__dark" data-stylesheet="/Public/Css/dark.css">Dark</option>
+        </select>
+        </div><br><br>
+              
+        <button id="clear-storage">Clear Storage</button>
+        
+        <script src="/Public/JavaScript/switchThemes.js"></script>
+      </div>
+</body>
+</html>

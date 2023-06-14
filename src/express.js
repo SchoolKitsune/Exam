@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var fs = require('fs');
 const cookieParser = require('cookie-parser');
 const sessions = require('express-session');
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 
 // links
 app.use(express.static(__dirname));
@@ -229,22 +229,90 @@ app.post('/user', (req, res) => {
 
 
 // This enables the user to edit his account after creating one, so they don't have to delete and remake their account if the typed something wrong
-app.get('/update', function (req, res) {
+app.get('/update-user/:person_nr', function (req, res) {
 
-   var con = connect();
- 
-   // setter payment og henter member_id fra skjema på login
-   var payment = "active";
-   var member_id = req.session.userid
-   req.session.payment = payment
+   var con = connection();
 
-   // perform the MySQL query to check if the user exists
-   var sql = `UPDATE payment SET payment = ? WHERE member_id = ?`;
+   var UserId = req.params.person_nr;
+   var sql = 'SELECT * FROM user WHERE person_nr = ?';
+   con.query(sql,[UserId], function (err, result, data) {
+      if (err) throw err;
+      console.log(result);
 
-   con.query(sql, [payment, member_id], (error, results) => {
-           res.render('payment.ejs');
- });
-})
+      var innhold = "";
+
+      res.render('editUser.ejs', { data: result, innhold: innhold, title: 'User List', editData: data[0]});
+   });
+});
+
+app.post('/update-user/:person_nr', (req, res) => {
+   
+   var con = connection();
+
+   var id = req.body.person_nr;
+   var fornavn = req.body.fornavn;
+   var mellomnavn = req.body.mellomnavn || '';
+   var email = req.body.email;
+   var passord = req.body.passord;
+   var etternavn = req.body.etternavn;
+   var tlf = req.body.tlf;
+   var adresse = req.body.adresse || '';
+   
+   tlf = tlf ? parseInt(tlf) : null;
+
+   var sql = 'UPDATE user SET fornavn = ?, mellomnavn = ?, etternavn = ?, email = ?, passord = ?, tlf = ?, adresse = ? WHERE person_nr = ?';
+   var values = [fornavn, mellomnavn, etternavn, email, passord, tlf, adresse, id];
+   con.query(sql, values, (err, data) => {
+      if (err) {
+         console.error('Error updating user in database:', err);
+         return res.status(500).send('Internal Server Error');
+      } else {
+         res.redirect('/')
+      }
+   console.log(data.affectedRows + " record(s) updated");
+   });
+});
+
+
+// This enables the user to edit his account after creating one, so they don't have to delete and remake their account if the typed something wrong
+app.get('/update-exercise/:name', function (req, res) {
+
+   var con = connection();
+
+   var UserId = req.params.name;
+   var sql = 'SELECT * FROM exercise WHERE name = ?';
+   con.query(sql,[UserId], function (err, result, data) {
+      if (err) throw err;
+      console.log(result);
+
+      var innhold = "";
+
+      res.render('editExercise.ejs', { data: result, innhold: innhold, title: 'User List', editData: data[0]});
+   });
+});
+
+app.post('/update-exercise/:name', (req, res) => {
+   
+   var con = connection();
+
+   var name = req.body.name;
+   var sets = req.body.sets;
+   var reps = req.body.reps;
+   var max_rep = req.body.max_rep;
+   var weight_kg = req.body.weight_kg;
+
+   var sql = 'UPDATE exercise SET name = ?, sets = ?, reps = ?, max_rep = ?, weight_kg = ? WHERE name = ?';
+   var values = [sets, reps, max_rep, weight_kg, name];
+   con.query(sql, values, (err, data) => {
+      if (err) {
+         console.error('Error updating exercise in database:', err);
+         return res.status(500).send('Internal Server Error');
+      } else {
+         res.redirect('/')
+      }
+   console.log(data.affectedRows + " record(s) updated");
+   });
+});
 
 
 // This gets the /exercise and checks if the credentials are correct, if not it sends you to the login.ejs

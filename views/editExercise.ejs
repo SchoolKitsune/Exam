@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Exercise</title>
+    <link rel="stylesheet" href="/Public/Css/table.css">
+    <link rel="stylesheet" href="/Public/Css/standard.css">
+    <link rel="stylesheet" href="/Public/Css/light.css">
+    <link id="active-stylesheet" href="" rel="stylesheet" type="text/css"/>
+</head>
+<body class="container">
+  <div class="exercise-container">
+    <h1>Create Exercise</h1>
+    <form action="/create-exercise" method="post">
+        <div class="input-field">
+            <input type="text" name="name" id="name" placeholder="Enter Exercise Name *" required>
+        </div>
+        <br>
+        <div class="input-field">
+            <input type="number" name="sets" id="sets" placeholder="Enter how many Sets you do *" required>
+        </div>
+        <br>
+        <div class="input-field">
+            <input type="number" name="reps" id="reps" placeholder="Enter how many Reps you do *" required>
+        </div>
+        <br>
+        <div class="input-field">
+            <input type="number" name="max_rep" id="max_rep" placeholder="Enter the Maximum of Reps you can do *" required>
+        </div>
+        <br>
+        <div class="input-field">
+            <input type="number" name="weight_kg" id="weight_kg" placeholder="Enter the Weight you lift using KG *" required>
+        </div>
+        <br>
+        <input class="submit" type="submit" value="Create Exercise">
+        <br> <br>
+        <button class="exercises"><a href="/exercise">Exercises</a></button>
+    </form>
+    <br>
+    <div class="content">
+        
+        <button><a href="/exercise">Done</a></button><br>
+    
+        <label for="switch-options">Themes:</label>
+        <select id="switch-options">
+          <option value="switch-options__light" data-stylesheet="/Public/Css/light.css">Light</option>
+          <option value="switch-options__dark" data-stylesheet="/Public/Css/dark.css">Dark</option>
+        </select>
+        </div><br><br>
+              
+        <button id="clear-storage">Clear Storage</button>
+        
+        <script src="/Public/JavaScript/switchThemes.js"></script>
+      </div>
+</body>
+</html>
